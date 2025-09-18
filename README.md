@@ -212,11 +212,3 @@ When reporting a bug, please include:
 *   What you expected to happen.
 *   Steps to reproduce the issue.
 *   Any relevant screenshots or error messages.
-
-## 8. Technology Stack
-
-*   **AI/Agent:** LangGraph, OpenAI, Anthropic, Google Gemini, local Ollama models.
-*   **Backend:** Python, FastAPI, Digital Ocean.
-*   **Frontend:** TypeScript, Next.js, Vercel.
-*   **Database/Auth/Billing:** Supabase (PostgreSQL, PostgREST), Clerk, Stripe.
-*   **Infrastructure:** Cloudflare.
