@@ -74,7 +74,7 @@ sequenceDiagram
     Agent-->>Frontend UI: Streams success message
     Note over Frontend UI: UI refreshes, displaying lists of<br/>"TPL: PharmaCo", "TPL: Pinnacle Research", etc.
 
-    User->>Frontend UI: Edits "TPL: Dr. Evelyn Reed" to "Priya Sharma"
+    User->>Frontend UI: Edits "TPL: Priya Sharma" to "Priya Sharma"
     Note over User, Frontend UI: The "TPL:" prefix is removed.<br/>This user record is now "adopted".
 
     User->>Agent: "Clear unused templates"
