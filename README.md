@@ -90,24 +90,24 @@ Follow this logical data flow to build a complete, accurate forecast from the gr
 
 ```mermaid
 graph TD
-    subgraph Phase 1: Foundational
+    subgraph Phase 1: Foundations
         A["1. Organizations & Users"] --> B["2. Budget Categories & <br>Reimbursement Types"];
         B --> C["3. Activity Templates"];
     end
     
-    subgraph Phase 2: Blueprint
+    subgraph Phase 2: Blueprints
         C --> D["4. Studies & Scenarios"];
         D --> E["5. Link Study to Scenario<br>(Create Configuration)"];
         E --> F["6. Define Partners, Sites,<br>& Calculation Rules"];
         F --> G["7. Define Schedule<br>(Arms, Epochs, Visits)"];
     end
     
-    subgraph Phase 3: Financial & Operational
+    subgraph Phase 3: Operations
         G --> H["8. Assign Costs to Activities"];
         H --> I["9. Map Activities to Visits<br>(Build SoA)"];
     end
 
-    subgraph Phase 4: Calculation & Analysis
+    subgraph Phase 4: Calculations
         I --> J["10. Recalculate Enrollment"];
         J --> K["11. Recalculate Forecast"];
         K --> L["12. Analyze & Compare Scenarios"];
