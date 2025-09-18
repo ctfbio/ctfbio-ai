@@ -16,7 +16,6 @@ This repository is the central hub for our beta community. We're thrilled to hav
 5.  [Under the Hood: The Calculation Engines](#5-under-the-hood-the-calculation-engines)
 6.  [System Architecture & Data Flow](#6-system-architecture--data-flow)
 7.  [Providing Feedback](#7-providing-feedback)
-8.  [Technology Stack](#8-technology-stack)
 
 ## 1. What is CTFBio AI?
 
@@ -91,28 +90,27 @@ Follow this logical data flow to build a complete, accurate forecast from the gr
 
 ```mermaid
 graph TD
-    subgraph "Phase 1: Foundational Setup"
-        A["1. Organizations & Users"] --> B;
-        B["2. Budget Categories & Reimbursement Types"] --> C;
-        C["3. Activity Templates"] --> D;
-    end
-
-    subgraph "Phase 2: Blueprint Configuration"
-        D["4. Studies & Scenarios"] --> E;
-        E["5. Link Study to Scenario (Create Configuration)"] --> F;
-        F["6. Define Partners, Sites, & Calculation Rules"] --> G;
-        G["7. Define Schedule (Arms, Epochs, Visits)"] --> H;
+    subgraph Phase 1: Foundational
+        A["1. Organizations & Users"] --> B["2. Budget Categories & <br>Reimbursement Types"];
+        B --> C["3. Activity Templates"];
     end
     
-    subgraph "Phase 3: Financial & Operational Setup"
-        H["8. Assign Costs to Activities"] --> I;
-        I["9. Map Activities to Visits (Build SoA)"] --> J;
+    subgraph Phase 2: Blueprint
+        C --> D["4. Studies & Scenarios"];
+        D --> E["5. Link Study to Scenario<br>(Create Configuration)"];
+        E --> F["6. Define Partners, Sites,<br>& Calculation Rules"];
+        F --> G["7. Define Schedule<br>(Arms, Epochs, Visits)"];
+    end
+    
+    subgraph Phase 3: Financial & Operational
+        G --> H["8. Assign Costs to Activities"];
+        H --> I["9. Map Activities to Visits<br>(Build SoA)"];
     end
 
-    subgraph "Phase 4: Calculation & Analysis"
-        J["10. Recalculate Enrollment"] --> K;
-        K["11. Recalculate Forecast"] --> L;
-        L["12. Analyze & Compare Scenarios"];
+    subgraph Phase 4: Calculation & Analysis
+        I --> J["10. Recalculate Enrollment"];
+        J --> K["11. Recalculate Forecast"];
+        K --> L["12. Analyze & Compare Scenarios"];
     end
 ```
 
@@ -153,53 +151,46 @@ Both engines are designed to be run multiple times as you refine your plan. They
 This diagram provides a high-level overview of how the major components of the system interact to transform your blueprint into an actionable forecast.
 
 ```mermaid
-graph TD
-    subgraph "Study Blueprint"
+graph LR
+    subgraph Blueprint
         direction TB
-        Blueprint["<b>Study & Scenario Definition</b><br><br>Studies<br>Budget Scenarios<br>Study Arms<br>Sites"]:::domainStyle
-        Schedule["<b>Operational Schedule (SoA)</b><br><br>Study Epochs<br>Study Visits<br>Schedule of Activities"]:::domainStyle
-        
+        Blueprint["<b>Study & Scenario Definition</b><br>Studies, Scenarios, Arms, Sites"]:::domainStyle
+        Schedule["<b>Operational Schedule (SoA)</b><br>Epochs, Visits, Activities"]:::domainStyle
         Blueprint --> Schedule
     end
 
-    subgraph "Financial Engine & Templates"
+    subgraph Financials
         direction TB
-        Templates["<b>Financial Templates</b><br><br>Activities<br>Budget Categories<br>Reimbursement Types"]:::financeStyle
-        Costs["<b>Scenario-Specific Costs</b><br><br>Activity Costs"]:::financeStyle
-        Rules["<b>Calculation Rules</b><br><br>Forecast Calculation Configs"]:::financeStyle
-
+        Templates["<b>Financial Templates</b><br>Activities, Budget Categories,<br>Reimbursement Types"]:::financeStyle
+        Costs["<b>Scenario-Specific Costs</b><br>Activity Costs"]:::financeStyle
+        Rules["<b>Calculation Rules</b><br>Forecast Configs"]:::financeStyle
         Templates --> Costs
         Templates --> Rules
     end
 
-    subgraph "Ledgers (The Immutable Output)"
+    subgraph Output
         direction TB
-        Ledgers["<b>Financial & Enrollment Ledgers</b><br><br>Budget Forecast<br>Enrollment Forecast"]:::ledgerStyle
+        Ledgers["<b>Ledgers (The Result)</b><br>Budget Forecast<br>Enrollment Forecast"]:::ledgerStyle
     end
 
-    %% --- Core Logic Flow ---
-    Engine("<b>3. Calculation Engine</b><br>[Recalculate Functions]")
-    style Engine fill:#f2f2f2,stroke:#333,stroke-width:4px
+    Engine("<b>Calculation<br>Engine</b>"):::engineStyle
 
-    Schedule -- "Defines 'What' happens" --> Engine
-    Costs -- "Defines 'How Much' it costs" --> Engine
-    Rules -- "Defines 'How' to calculate" --> Engine
-    Engine -- "Generates" --> Ledgers
+    Blueprint -- "Defines 'What' happens" --> Engine
+    Financials -- "Defines 'How Much' & 'How'" --> Engine
+    Engine -- "Generates" --> Output
 
-    %% --- Cross-Domain Links ---
-    Templates -- "Are linked to" --> Schedule
-
-    %% --- Styling ---
+    %% Styling
     classDef domainStyle fill:#e6f2ff,stroke:#0052cc,stroke-width:2px,color:#333,font-weight:bold
     classDef financeStyle fill:#e6fff2,stroke:#006644,stroke-width:2px,color:#333,font-weight:bold
     classDef ledgerStyle fill:#fffbe6,stroke:#ffab00,stroke-width:2px,color:#333,font-weight:bold
+    classDef engineStyle fill:#f2f2f2,stroke:#333,stroke-width:4px
 ```
 
 ## 7. Providing Feedback
 
 Your feedback is the most valuable part of this beta. Please help us improve by reporting bugs and suggesting features.
 
-**Please use the [Issues tab](https://github.com/ctfbio-ai/ctfbio-ai/issues) in this repository.**
+**Please use the [Issues tab](https://github.com/ctfbio/ctfbio-ai/issues) in this repository.**
 
 When reporting a bug, please include:
 *   A clear and descriptive title.
@@ -207,8 +198,3 @@ When reporting a bug, please include:
 *   What you expected to happen.
 *   Steps to reproduce the issue.
 *   Any relevant screenshots or error messages.
-
-
-
-
-
