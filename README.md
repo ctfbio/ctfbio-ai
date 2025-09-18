@@ -60,28 +60,28 @@ This entire workflow is designed to be safe and intuitive.
 sequenceDiagram
     actor User
     participant Agent
-    participant Frontend UI
-    participant Backend API
+    participant UI
+    participant Database
 
-    User->>Agent: "Create a forecast for a new oncology study"
+    User->>Agent: "Create a forecast for a new study"
     Agent->>Agent: Recognizes workspace is empty
-    Agent->>Frontend UI: Propose Tool Call: populate_template_data()
-    Frontend UI->>User: Show "Accept" / "Deny" prompt
+    Agent->>Frontend UI: Propose Tool Call: Populate Template Data tool
+    UI->>User: Show "Accept" / "Deny" prompt
 
-    User->>Frontend UI: Clicks "Accept"
-    Frontend UI->>Agent: Signal approval
-    Agent->>Backend API: Executes populate_template_data_for_agent()
-    Backend API-->>Agent: Returns success report
-    Agent-->>Frontend UI: Streams success message
-    Note over Frontend UI: UI refreshes, displaying lists of<br/>"TPL: PharmaCo", "TPL: Pinnacle Research", etc.
+    User->>UI: Clicks "Accept"
+    UI->>Agent: Signal approval
+    Agent->>Database: Executes Populate Template Data tool
+    Database-->>Agent: Success report
+    Agent-->>UI: Success message
+    Note over UI: Display refreshes, displaying lists of<br/>"TPL: PharmaCo", "TPL: Pinnacle Research", etc.
 
-    User->>Frontend UI: Edits "TPL: Priya Sharma" to "Priya Sharma"
-    Note over User, Frontend UI: The "TPL:" prefix is removed.<br/>This user record is now "adopted".
+    User->>UI: Edits "TPL: Priya Sharma" to "Priya Sharma"
+    Note over User, UI: The "TPL:" prefix is removed.<br/>This user record is now "adopted".
 
     User->>Agent: "Clear unused templates"
-    Agent->>Backend API: Calls clear_template_data_for_agent()
-    Backend API-->>Agent: Returns success report
-    Note over Frontend UI: UI refreshes. "Priya Sharma" remains.<br/>All other "TPL:" records are gone.
+    Agent->>Database: Calls clear_template_data_for_agent()
+    Database-->>Agent: Returns success report
+    Note over UI: Display refreshes. "Priya Sharma" remains.<br/>All other "TPL:" records are gone.
 ```
 
 ### Option B: The Guided Path (Building from Scratch)
