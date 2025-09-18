@@ -65,7 +65,7 @@ sequenceDiagram
 
     User->>Agent: "Create a forecast for a new study"
     Agent->>Agent: Recognizes workspace is empty
-    Agent->>Frontend UI: Propose Tool Call: Populate Template Data tool
+    Agent->>UI: Propose Tool Call: Populate Template Data tool
     UI->>User: Show "Accept" / "Deny" prompt
 
     User->>UI: Clicks "Accept"
