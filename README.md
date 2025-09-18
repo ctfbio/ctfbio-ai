@@ -126,7 +126,6 @@ Understanding our core product metaphor will help you get the most out of the pl
     *   **Compiler Errors:** Structural errors that prevent a forecast from running.
     *   **Compiler Warnings:** Data gaps (like a missing cost) that lead to an incomplete forecast.
     *   **Profiler Output:** High-level analytics to help you judge if the plan is sound.
-*   **You Use "Version Control" (Scenario Cloning):** The `clone_budget_scenario` function enables safe, isolated "branching" for what-if analysis without corrupting your "main" branch (the Baseline).
 
 ## 5. Under the Hood: The Calculation Engines
 
