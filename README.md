@@ -154,30 +154,30 @@ This diagram provides a high-level overview of how the major components of the s
 graph LR
     subgraph Blueprint
         direction TB
-        Blueprint["<b>Study & Scenario Definition</b><br>Studies, Scenarios, Arms, Sites"]:::domainStyle
-        Schedule["<b>Operational Schedule (SoA)</b><br>Epochs, Visits, Activities"]:::domainStyle
-        Blueprint --> Schedule
+        BlueprintNode["<b>Study & Scenario Definition</b><br>Studies, Scenarios, Arms, Sites"]:::domainStyle
+        ScheduleNode["<b>Operational Schedule (SoA)</b><br>Epochs, Visits, Activities"]:::domainStyle
+        BlueprintNode --> ScheduleNode
     end
 
     subgraph Financials
         direction TB
-        Templates["<b>Financial Templates</b><br>Activities, Budget Categories,<br>Reimbursement Types"]:::financeStyle
-        Costs["<b>Scenario-Specific Costs</b><br>Activity Costs"]:::financeStyle
-        Rules["<b>Calculation Rules</b><br>Forecast Configs"]:::financeStyle
-        Templates --> Costs
-        Templates --> Rules
+        TemplatesNode["<b>Financial Templates</b><br>Activities, Budget Categories,<br>Reimbursement Types"]:::financeStyle
+        CostsNode["<b>Scenario-Specific Costs</b><br>Activity Costs"]:::financeStyle
+        RulesNode["<b>Calculation Rules</b><br>Forecast Configs"]:::financeStyle
+        TemplatesNode --> CostsNode
+        TemplatesNode --> RulesNode
     end
 
     subgraph Output
         direction TB
-        Ledgers["<b>Ledgers (The Result)</b><br>Budget Forecast<br>Enrollment Forecast"]:::ledgerStyle
+        LedgersNode["<b>Ledgers (The Result)</b><br>Budget Forecast<br>Enrollment Forecast"]:::ledgerStyle
     end
 
-    Engine("<b>Calculation<br>Engine</b>"):::engineStyle
+    EngineNode("<b>Calculation<br>Engine</b>"):::engineStyle
 
-    Blueprint -- "Defines 'What' happens" --> Engine
-    Financials -- "Defines 'How Much' & 'How'" --> Engine
-    Engine -- "Generates" --> Output
+    Blueprint -- "Defines 'What' happens" --> EngineNode
+    Financials -- "Defines 'How Much' & 'How'" --> EngineNode
+    EngineNode -- "Generates" --> Output
 
     %% Styling
     classDef domainStyle fill:#e6f2ff,stroke:#0052cc,stroke-width:2px,color:#333,font-weight:bold
