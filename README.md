@@ -79,7 +79,7 @@ sequenceDiagram
     Note over User, UI: The "TPL:" prefix is removed.<br/>This user record is now "adopted".
 
     User->>Agent: "Clear unused templates"
-    Agent->>Database: Calls clear_template_data_for_agent()
+    Agent->>Database: Calls clear template data worker
     Database-->>Agent: Returns success report
     Note over UI: Display refreshes. "Priya Sharma" remains.<br/>All other "TPL:" records are gone.
 ```
