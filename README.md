@@ -76,7 +76,7 @@ sequenceDiagram
     Agent-->>Frontend UI: Streams success message
     Note over Frontend UI: UI refreshes, displaying lists of<br/>"TPL: PharmaCo", "TPL: Pinnacle Research", etc.
 
-    User->>Frontend UI: Edits "TPL: Dr. Evelyn Reed" to "Priya Sharma"
+    User->>Frontend UI: Edits "TPL: Priya Sharma" to "Priya Sharma"
     Note over User, Frontend UI: The "TPL:" prefix is removed.<br/>This user record is now "adopted".
 
     User->>Agent: "Clear unused templates"
@@ -92,27 +92,27 @@ Follow this logical data flow to build a complete, accurate forecast from the gr
 ```mermaid
 graph TD
     subgraph "Phase 1: Foundational Setup"
-        A[1. Organizations & Users] --> B;
-        B[2. Budget Categories & Reimbursement Types] --> C;
-        C[3. Activity Templates] --> D;
+        A["1. Organizations & Users"] --> B;
+        B["2. Budget Categories & Reimbursement Types"] --> C;
+        C["3. Activity Templates"] --> D;
     end
 
     subgraph "Phase 2: Blueprint Configuration"
-        D[4. Studies & Scenarios] --> E;
-        E[5. Link Study to Scenario (Create Configuration)] --> F;
-        F[6. Define Partners, Sites, & Calculation Rules] --> G;
-        G[7. Define Schedule (Arms, Epochs, Visits)] --> H;
+        D["4. Studies & Scenarios"] --> E;
+        E["5. Link Study to Scenario (Create Configuration)"] --> F;
+        F["6. Define Partners, Sites, & Calculation Rules"] --> G;
+        G["7. Define Schedule (Arms, Epochs, Visits)"] --> H;
     end
     
     subgraph "Phase 3: Financial & Operational Setup"
-        H[8. Assign Costs to Activities] --> I;
-        I[9. Map Activities to Visits (Build SoA)] --> J;
+        H["8. Assign Costs to Activities"] --> I;
+        I["9. Map Activities to Visits (Build SoA)"] --> J;
     end
 
     subgraph "Phase 4: Calculation & Analysis"
-        J[10. Recalculate Enrollment] --> K;
-        K[11. Recalculate Forecast] --> L;
-        L[12. Analyze & Compare Scenarios];
+        J["10. Recalculate Enrollment"] --> K;
+        K["11. Recalculate Forecast"] --> L;
+        L["12. Analyze & Compare Scenarios"];
     end
 ```
 
@@ -155,14 +155,12 @@ This diagram provides a high-level overview of how the major components of the s
 
 ```mermaid
 graph TD
-    subgraph "Study Blueprint & Collaboration"
+    subgraph "Study Blueprint"
         direction TB
         Blueprint["<b>Study & Scenario Definition</b><br><br>Studies<br>Budget Scenarios<br>Study Arms<br>Sites"]:::domainStyle
         Schedule["<b>Operational Schedule (SoA)</b><br><br>Study Epochs<br>Study Visits<br>Schedule of Activities"]:::domainStyle
-        Collaboration["<b>Collaboration Bridge</b><br><br>Shared Scenarios"]:::collabStyle
-
+        
         Blueprint --> Schedule
-        Blueprint -- "Is Shared Via" --> Collaboration
     end
 
     subgraph "Financial Engine & Templates"
@@ -175,10 +173,9 @@ graph TD
         Templates --> Rules
     end
 
-    subgraph "Ledgers & Audit Trails (The Immutable Output)"
+    subgraph "Ledgers (The Immutable Output)"
         direction TB
         Ledgers["<b>Financial & Enrollment Ledgers</b><br><br>Budget Forecast<br>Enrollment Forecast"]:::ledgerStyle
-        Logs["<b>AI & HITL Logs</b><br><br>Agent Memory Log"]:::ledgerStyle
     end
 
     %% --- Core Logic Flow ---
@@ -195,7 +192,6 @@ graph TD
 
     %% --- Styling ---
     classDef domainStyle fill:#e6f2ff,stroke:#0052cc,stroke-width:2px,color:#333,font-weight:bold
-    classDef collabStyle fill:#e6f2ff,stroke:#0052cc,stroke-width:4px,color:#333,font-weight:bold
     classDef financeStyle fill:#e6fff2,stroke:#006644,stroke-width:2px,color:#333,font-weight:bold
     classDef ledgerStyle fill:#fffbe6,stroke:#ffab00,stroke-width:2px,color:#333,font-weight:bold
 ```
@@ -212,3 +208,8 @@ When reporting a bug, please include:
 *   What you expected to happen.
 *   Steps to reproduce the issue.
 *   Any relevant screenshots or error messages.
+
+
+
+
+
