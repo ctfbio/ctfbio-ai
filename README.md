@@ -190,7 +190,10 @@ graph LR
 
 Your feedback is the most valuable part of this beta. Please help us improve by reporting bugs and suggesting features.
 
-**Please use the [Issues tab](https://github.com/ctfbio/ctfbio-ai/issues) in this repository.**
+Google Form for Beta Feedback: https://forms.gle/t1r3QzH7qtDM9KYA7
+
+
+**Code bugs github issues (optional) form: [Issues tab](https://github.com/ctfbio/ctfbio-ai/issues)**
 
 When reporting a bug, please include:
 *   A clear and descriptive title.
